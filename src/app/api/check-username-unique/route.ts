@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect"
 import userModel from "@/models/user.model"
-import { success, z } from "zod"
+import { z } from "zod"
 import { usernameValidation } from "@/schemas/signUpSchema"
 
 const UsernameQuerySchema = z.object({
@@ -8,6 +8,7 @@ const UsernameQuerySchema = z.object({
 })
 
 export async function GET(request: Request) {
+
     await dbConnect()
 
     try {

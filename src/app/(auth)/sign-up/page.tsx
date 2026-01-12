@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useDebounceValue, useDebounceCallback } from "usehooks-ts";
+import { useDebounceCallback } from "usehooks-ts";
 import axios, { AxiosError } from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -64,7 +64,7 @@ const Page = () => {
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setIsSubmiting(true);
     try {
-      const response = await axios.post<ApiResponse>("/api/sign-up", data);
+     await axios.post<ApiResponse>("/api/sign-up", data);
       router.replace(`/verify/${username}`);
     } catch (error) {
       console.error("Error in signup of user", error);
